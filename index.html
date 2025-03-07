@@ -15,14 +15,30 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <body>
         <h1 style="text-align:center;">Mans portfolio</h1>
         <h2 style="text-align:center;">Ko es iemācijos šajā mācību gadā?</h2>
-        <p><b>Ar Inkscape iemacijos, kā apstrādāt bildes un veidot visādus logo.</b></p><br>
-        <img src="images/inkscape.png" alt="sadge" style="height: 250px; width: 250px;"><br>
-        <p><b>Iemacijos kā darboties ar word un formatēt to.</b></p><br>
-        <img src="images/word.png" alt="sadge" style="height: 250px; width: 500px;"><br>
+        <p><b>Ar Inkscape iemācijos, kā apstrādāt bildes un veidot visādus logo.</b></p><br>
+        <img src="images/inkscape.png" alt="sadge" style="height: 250px;"><br>
+        <p><b>Iemācijos kā darboties ar word un formatēt to.</b></p><br>
+        <img src="images/word.png" alt="sadge" style="height: 250px;"><br>
         <p><b>Excel zināšanas man noteikti palīdzēs nākotnē.</b></p><br>
-        <img src="images/excel.png" alt="sadge" style="height: 250px; width: 400px;"><br>
+        <img src="images/excel.png" alt="sadge" style="height: 250px;"><br>
         <p><b>Es iemācijos, kā darboties ar 3D objektiem un veidot tos, diemžēl izprintēt nesanāca.</b></p><br>
-        <img src="images/3D.png" alt="sadge" style="height: 250px; width: 250px;"><br>
+        <img src="images/3D.png" alt="sadge" style="height: 250px;">
+        <img src="images/tinker.png" alt="sadge" style="height:250px;"><br>
         <p><i>Mērkaķis.</i><br/><video width="300" controls="controls" src="images/dance.mp4"></video></p>
+        <p id="kura">Kā tev patīk mans portfolio?</p>
+        <form>
+            <input name="patik"> <br>
+            <input type="radio" id="loti" name="sigma" value="ļoti">
+            <label for="loti">Ļoti</label><br>
+            <input type="radio" id="neloti" name="sigma" value="ne ļoti">
+            <label for="loti">Ne ļoti</label><br>
+            <input type="button" value="Iesniegt"
+                   onclick="patik.value=sigma.value; maina(sigma.value);">
+        </form>
+        <script>
+            function maina(teksts){
+                document.getElementById("kura").innerHTML="Man " +teksts  +" patīk";
+            }
+        </script>
     </body>
 </html>
