@@ -123,6 +123,32 @@
         html {
             scroll-behavior: smooth;
         }
+
+        .survey-section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+
+        .survey-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .survey-section input[type="radio"] {
+            margin: 0 10px;
+        }
+
+        .survey-section button {
+            margin-top: 20px;
+        }
+
+        .feedback-message {
+            display: none;
+            font-size: 1.2rem;
+            margin-top: 15px;
+        }
     </style>
 </head>
 <body>
@@ -185,37 +211,38 @@
             <h3>Projekts nr.4</h3>
             <p>Es iemācijos, kā darboties ar 3D objektiem un veidot tos, diemžēl izprintēt nesanāca.</p>
         </div>
+        
     </section>
-     
-    <p id="kura">Kā tev patīk mans portfolio?</p>
-        <form>
-            <input name="patik"> <br>
-            <input type="radio" id="loti" name="sigma" value="ļoti">
-            <label for="loti">Ļoti</label><br>
-            <input type="radio" id="neloti" name="sigma" value="ne ļoti">
-            <label for="loti">Ne ļoti</label><br>
-            <input type="button" value="Iesniegt"
-                   onclick="patik.value=sigma.value; maina(sigma.value);">
+         <section class="survey-section">
+        <h3>Vai tev patīk mans portfolio?</h3>
+        <form id="surveyForm">
+            <label>
+                <input type="radio" name="portfolioFeedback" value="yes"> Jā
+            </label>
+            <label>
+                <input type="radio" name="portfolioFeedback" value="no"> Nē
+            </label>
+            <br>
+            <button type="button" onclick="submitSurvey()">Iesniegt atsauksmi</button>
         </form>
-        <script>
-            function maina(teksts){
-                document.getElementById("kura").innerHTML="Man " +teksts  +" patīk";
-            }
-        </script>
-
-    <section id="contact">
-        <h2>Kontakti</h2>
-        <p>Ja tu vēlētos man uzrakstīt un kaut ko pajautāt, tad jūs esat laipni lūgti to darīt.</p>
-        <div class="contact-form">
-            <form action="submit_form.php" method="POST">
-                <input type="text" name="name" placeholder="Vārds, Uzvārds" required>
-                <input type="email" name="email" placeholder="E-pasta adrese" required>
-                <textarea name="message" placeholder="Tava ziņa" rows="4" required></textarea>
-                <button type="submit">Sūtīt ziņu</button>
-            </form>
-        </div>
+        <div class="feedback-message" id="feedbackMessage"></div>
     </section>
 </div>
+
+<script>
+    function submitSurvey() {
+        const feedback = document.querySelector('input[name="portfolioFeedback"]:checked');
+        const feedbackMessage = document.getElementById("feedbackMessage");
+
+        if (feedback) {
+            const message = feedback.value === "yes" ? "Paldies! Es priecājos, ka tev patīk mans portfolio!" : "Paldies! Es centīšos uzlabot savu portfolio.";
+            feedbackMessage.textContent = message;
+            feedbackMessage.style.display = "block";
+        } else {
+            alert("Lūdzu izvēlies atbildi.");
+        }
+    }
+</script>
 
 <footer>
     <p></p>
