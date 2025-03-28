@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaidot dzimšanas dienu..</title>
+</head>
+<body>
+    <h1>Gaidot dzimšanas dienu..</h1>
+    <hr>
+
+    <form id="birthdayForm">
+        <label for="gads">Gads:</label>
+        <input type="number" id="gads" name="gads"  required><br><br>
+
+        <label for="menesis">Mēnesis:</label>
+        <input type="number" id="menesis" name="menesis"  min="1" max="12" required><br><br>
+
+        <label for="datums">Diena:</label>
+        <input type="number" id="datums" name="datums"  min="1" max="31" required><br><br>
+
+        <button type="button" onclick="calculateDays()">Aprēķināt dienu skaitu līdz dzimšanas dienai</button><br><br>
+
+        <label for="dienas">Līdz svētkiem atlikušas:</label>
+        <input type="text" id="dienas" name="dienas" disabled>
+        <label for="palicis">dienas : ))</label>
+    </form>
+
+    <script>
+        function calculateDays() {
+            const gads = document.getElementById('gads').value;
+            const menesis = document.getElementById('menesis').value - 1;
+            const datums = document.getElementById('datums').value;
+
+            if (!gads || !menesis || !datums) {
+                alert("Lūdzu, ievadi visus nepieciešamos datus!");
+                return;
+            }
+
+            const dzimšanasDatums = new Date(gads, menesis, datums);
+            const šodien = new Date();
+
+            if (dzimšanasDatums < šodien) {
+                dzimšanasDatums.setFullYear(šodien.getFullYear() + 1);
+            }
+
+            const timeDifference = dzimšanasDatums - šodien;
+            const daysLeft = Math.ceil(timeDifference / (1000 * 3600 * 24));
+
+            document.getElementById('dienas').value = daysLeft;
+        }
+    </script>
+<p><a href="index.html">Uz sākumu</a></p>
+</body>
+</html>
